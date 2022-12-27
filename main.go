@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"net/http"
 )
 
 type apiConfigData struct {
@@ -29,4 +30,12 @@ func loadApiConfig(filename string) (apiConfigData, error) {
 		return apiConfigData{}, err
 	}
 	return config, nil
+}
+
+func main() {
+	http.HandleFunc("/hello", hello)
+
+	http.HandleFunc("/weather/", weather)
+
+	http.ListenAndServe(":8080", nil)
 }
