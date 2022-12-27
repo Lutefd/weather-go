@@ -40,7 +40,7 @@ func query(city string) (weatherData, error) {
 	if err != nil {
 		return weatherData{}, err
 	}
-	resp, err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiConfig.OpenWeatherMapKey)
+	resp, err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiConfig.OpenWeatherMapKey + "&units=metric")
 	if err != nil {
 		return weatherData{}, err
 	}
