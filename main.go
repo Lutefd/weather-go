@@ -37,7 +37,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 func query(city string) (weatherData, error) {
 	apiConfig, err := loadApiConfig(".apiConfig")
-	if err!=nil{
+	if err != nil {
 		return weatherData{}, err
 	}
 	resp, err := http.Get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiConfig.OpenWeatherMapKey)
@@ -65,8 +65,7 @@ func main() {
 		}
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		json.NewEncoder(w).Encode(data)
-	}
+	})
 
 	http.ListenAndServe(":8080", nil)
 }
-
